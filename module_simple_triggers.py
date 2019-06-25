@@ -3275,10 +3275,13 @@ simple_triggers = [
     ]),
     
   # Spawn some bandits.
-  (24, 
+  (72,
    [
       (call_script, "script_spawn_bandits"),
-   
+   ]),
+  # bandit from prisoners and deserts
+  (24,
+   [
       ## CC
       # bandit_prisoners_convert_to_bandit_party_of_center
       (set_spawn_radius, 1),

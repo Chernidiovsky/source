@@ -90,7 +90,7 @@ parties = [
     ("town_22", "Bariyye", icon_town_desert | pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (165, -106.7), [], 225),
     ("town_23", "Ruven", icon_town | pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-20, 11), [], 290),  # Swadia
     ("town_24", "Shevalin", icon_town | pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-120.97, 12.28), [], 0),  # Swadia *siege tower*
-    ("town_25", "Arenes", icon_town_snow | pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (101, 102), [], 85),  # Vaegirs
+    ("town_25", "Arentis", icon_town_snow | pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (101, 102), [], 85),  # Vaegirs
     ("town_26", "Hottam", icon_town_steppe | pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (159, 9), [], 45),  # Khergit
     ("town_27", "Osdenke", icon_town | pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-103, 81), [], 55),  # Nords
     ("town_28", "Vinich", icon_town | pf_town, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-36.74, -94.74), [], 45),  # Rhodoks

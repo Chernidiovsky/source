@@ -32,7 +32,7 @@ party_templates = [
     ("village_defenders", "Village Defenders", icon_peasant, 0, fac_commoners, merchant_personality, [(trp_farmer, 10, 20), (trp_peasant_woman, 0, 4)]),
     ("cattle_herd", "Cattle Herd", icon_cattle | carries_goods(10), 0, fac_neutral, merchant_personality, [(trp_cattle, 80, 120)]),
     ("looters", "Looters", icon_axeman | carries_goods(8), 0, fac_outlaws, bandit_personality, [(trp_looter, 3, 30), (trp_bandit, 2, 15)]),  ## CC
-    ("manhunters", "Manhunters", icon_gray_knight, 0, fac_manhunters, soldier_personality, [(trp_manhunter, 9, 40)]),
+    ("manhunters", "Manhunters", icon_gray_knight, 0, fac_manhunters, soldier_personality, [(trp_manhunter, 9, 25), (trp_slave_driver, 4, 15), (trp_slave_hunter, 4, 10), (trp_slave_crusher, 0, 6)]),
     ("forest_bandits", "Forest Bandits", icon_axeman | carries_goods(2), 0, fac_outlaws, bandit_personality, [(trp_veteran_forest_bandit, 4, 11), (trp_trained_forest_bandit, 5, 14), (trp_forest_bandit, 10, 30)]),
     ("taiga_bandits", "Tundra Bandits", icon_axeman | carries_goods(2), 0, fac_outlaws, bandit_personality, [(trp_veteran_taiga_bandit, 4, 9), (trp_trained_taiga_bandit, 5, 12), (trp_taiga_bandit, 9, 29)]),
     ("steppe_bandits", "Steppe Bandits", icon_khergit | carries_goods(2), 0, fac_outlaws, bandit_personality, [(trp_veteran_steppe_bandit, 3, 7), (trp_trained_steppe_bandit, 3, 9), (trp_steppe_bandit, 7, 20)]),
