@@ -366,7 +366,7 @@ parties = [
     ("Bridge_14", "{!}14", icon_bridge_a | pf_is_static | pf_always_visible | pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-23.36, 75.8), [], 66.6),
     ("Bridge_15", "{!}15", icon_bridge_a | pf_is_static | pf_always_visible | pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-44.97, 113.85), [], 111.6),
     ("Bridge_16", "{!}16", icon_bridge_a | pf_is_static | pf_always_visible | pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (-42.03, 114.51), [], 84.0),
-    ("Bridge_17", "{!}17", icon_bridge_a | pf_is_static | pf_always_visible | pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (17.94, -32.22), [], 76.6),
+    ("Bridge_17", "{!}17", icon_bridge_a | pf_is_static | pf_always_visible | pf_no_label, no_menu, pt_none, fac_neutral, 0, ai_bhvr_hold, 0, (17.94, -32.22), [], 68.0),
     
     ("looter_spawn_point", "{!}looter_sp", pf_disabled | pf_is_static, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (26, 77), [(trp_looter, 15, 0)]),
     ("forest_bandit_spawn_point", "the forests", pf_disabled | pf_is_static, no_menu, pt_none, fac_outlaws, 0, ai_bhvr_hold, 0, (-35, 18), [(trp_looter, 15, 0)]),
