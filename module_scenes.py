@@ -257,7 +257,7 @@ scenes = [
      [], [], "outer_terrain_town_thir_1"),
     ("town_13_center", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x300416a600035cd600007ee80000012100003fbc",
      [], ["bonus_chest_1"]),
-    ("town_14_center", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x00000000200016da000364d9000060f500007591000064e7",
+    ("town_14_center", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x000000002000098d000364d9000060f500007591000064e7",
      [], [], "outer_terrain_steppe"),
     ("town_15_center", sf_generate, "none", "none", (0, 0), (100, 100), -100, "0x0000000030024e108003fd0100007bd300006c31000061aa",
      [], [], "outer_terrain_plain"),
