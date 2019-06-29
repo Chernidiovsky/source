@@ -1962,12 +1962,8 @@ dialogs = [
                        (eq, "$talk_context", tc_party_encounter)],
      "{!}Do you want me to rejoin you?", "close_window", []],  # unused
     [anyone, "start", [(neg | main_party_has_troop, "$g_talk_troop"), (eq, "$g_encountered_party", "p_four_ways_inn")], "{!}Do you want me to rejoin you?", "close_window", []],  # unused
-    #  [anyone,"member_separate_inn", [], "I don't know what you will do without me, but you are the boss. I'll wait for you at the Four Ways inn.", "close_window",
-    #  [anyone,"member_separate_inn", [], "All right then. I'll meet you at the four ways inn. Good luck.", "close_window",
-    #   [(remove_member_from_party,"$g_talk_troop", "p_main_party"),(add_troop_to_site, "$g_talk_troop", "scn_four_ways_inn", borcha_inn_entry)]],
     
     # Quest heroes member chats
-    
     [trp_kidnapped_girl, "member_chat", [], "Are we home yet?", "kidnapped_girl_chat_1", []],
     [trp_kidnapped_girl | plyr, "kidnapped_girl_chat_1", [], "Not yet.", "kidnapped_girl_chat_2", []],
     [trp_kidnapped_girl, "kidnapped_girl_chat_2", [], "I can't wait to get back. I've missed my family so much, I'd give anything to see them again.", "close_window", []],
@@ -3758,7 +3754,7 @@ dialogs = [
      "Actually, never mind.", "minister_pretalk", []],
     
     
-    # emissary
+    # emissary, deputy enabled
     [anyone | plyr, "minister_talk", [(is_between, "$g_player_minister", active_npcs_begin, kingdom_ladies_end),],
      "I wish to dispatch an emissary.", "minister_diplomatic_kingdoms", []],
     # emissary sub
@@ -3770,12 +3766,6 @@ dialogs = [
         (try_end),
         (eq, ":companion_found", 1),],
      "To whom do you wish to send this emissary?", "minister_diplomatic_kingdoms_select", []],
-    
-    # [anyone, "minister_diplomatic_kingdoms", [],
-    #  "Unfortunately, there is no one to send right now.", "minister_pretalk", []],
-    #
-    # [anyone, "minister_diplomatic_kingdoms", [],
-    #  "To whom do you wish to send this emissary?", "minister_diplomatic_kingdoms_select", []],
     
     [anyone | plyr | repeat_for_factions, "minister_diplomatic_kingdoms_select", [
         (store_repeat_object, ":faction_no"),
@@ -3919,7 +3909,7 @@ dialogs = [
      "It has been sent, {sire/my lady}.", "minister_pretalk",
      [(call_script, "script_indict_lord_for_treason", "$lord_selected", "fac_player_supporters_faction"),]],
     
-    # changing marshal
+    # changing marshal, deputy enabled
     [anyone | plyr, "minister_talk", [
         (faction_get_slot, ":current_marshal", "$players_kingdom", slot_faction_marshall),
         (ge, ":current_marshal", 0),
@@ -3938,8 +3928,9 @@ dialogs = [
     [anyone, "minister_change_marshal", [
         (store_current_hours, ":hours"),
         (val_sub, ":hours", "$g_player_faction_last_marshal_appointment"),
-        (lt, ":hours", 48), ],
-     "You have just made such an appointment, {sire/my lady}. If you countermand your decree so soon, there will be great confusion. We will need to wait a few days.",
+        (lt, ":hours", 24 * 7),
+    ],  # changed from 2d to 7d
+     "You have just made such an appointment, {sire/my lady}. If you countermand your decree in less than a week, there will be great confusion.",
      "minister_pretalk", []],
     # changing marshal sub
     [anyone, "minister_change_marshal", [], "Who should be the new marshal?", "minister_change_marshal_choose", []],
@@ -4094,7 +4085,7 @@ dialogs = [
         (try_end),
         (gt, ":fief_found", -1),
         (str_store_party_name, s4, ":fief_found"),],
-     "I wish to make myself lord of {s4}.", "minister_grant_self_fief", []],
+     "I wish to make myself lord of {s4}.", "minister_grant_self_fief", []],  # deputy enabled
     
     # grant fief sub
     [anyone, "minister_grant_fief", [
@@ -5492,25 +5483,6 @@ dialogs = [
          (assign, "$g_leave_encounter", 1),  # Not sure why this is necessary
      ]],
     
-    ##  [anyone|plyr,"freed_lord_answer", [(neg|faction_slot_eq, "$g_talk_troop_faction", slot_faction_leader, "$g_talk_troop"), #he is not a faction leader!
-    ##                                     (call_script, "script_get_number_of_hero_centers", "$g_talk_troop"),
-    ##                                     (eq, reg0, 0), #he has no castles or towns
-    ##                                     (hero_can_join)],
-    ##   "I need capable men like you. Would you like to join me?", "knight_offer_join",
-    ##   []],
-    ##
-    ##  [anyone,"freed_lord_answer_3", [(store_random_in_range, ":random_no",0,2),(eq, ":random_no", 0)],
-    ##   "Alright I will join you.", "close_window",
-    ##   [
-    ###     (troop_set_slot, "$g_talk_troop", slot_troop_is_player_companion, 1),
-    ##     (troop_set_slot, "$g_talk_troop", slot_troop_occupation, slto_player_companion),
-    ##     (store_conversation_troop, ":cur_troop_id"),
-    ##     (party_add_members, "p_main_party", ":cur_troop_id", 1),#join hero
-    ##   ]],
-    ##
-    ##  [anyone,"freed_lord_answer_3", [],
-    ##   "No, I want to go on my own.", "close_window", []],
-    
     # Troop commentary changes begin
     [anyone, "start", [(eq, "$talk_context", tc_hero_defeated),
                        (troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_hero)],
@@ -5617,30 +5589,7 @@ dialogs = [
     ],
      "{s43}", "close_window", []],
     
-    ##  [anyone,"start", [(eq,"$talk_context",tc_party_encounter),
-    ##                    (troop_slot_eq, "$g_talk_troop", slot_troop_occupation, slto_kingdom_hero),
-    ##                    (lt,"$g_encountered_party_relation",0),
-    ##                    (neg|encountered_party_is_attacker),
-    ##                    ],
-    ##   "What do you want?", "party_encounter_lord_hostile_defender",
-    ##   []],
-    
-    #  [anyone|plyr,"party_encounter_lord_hostile_defender", [],
-    #   "Nothing. We'll leave you in peace.", "close_window", [(assign, "$g_leave_encounter",1)]],
-    
-    # Betrayal texts should go here
-    
-    ##  [anyone ,"start", [(troop_slot_eq,"$g_talk_troop",slot_troop_occupation, slto_kingdom_hero),
-    ##                     (troop_slot_eq,"$g_talk_troop",slot_troop_last_quest_betrayed, 1),
-    ##                     (troop_slot_eq,"$g_talk_troop",slot_troop_last_quest, "qst_deliver_message_to_lover"),
-    ##                     (le,"$talk_context",tc_siege_commander),
-    ##                     ],
-    ##   "I had trusted that letter to you, thinking you were a {man/lady} of honor, and you handed it directly to the girl's father.\
-    ## I should have known you were not to be trusted. Anyway, I have learned my lesson and I won't make that mistake again.", "close_window",
-    ##   [(call_script, "script_clear_last_quest", "$g_talk_troop")]],
-    
     # Lord to be recruited
-    
     [anyone, "start",
      [
          (eq, "$g_talk_troop_faction", "fac_player_supporters_faction"),
@@ -5678,7 +5627,7 @@ dialogs = [
          # Seek alternative liege
          (assign, "$g_leave_encounter", 1),
          (call_script, "script_troop_change_relation_with_troop", "$g_talk_troop", "trp_player", -10),
-         (call_script, "script_lord_find_alternative_faction", "$g_talk_troop"),
+         (call_script, "script_lord_find_alternative_faction", "$g_talk_troop"),  # get reg0:new_faction from the script
          (assign, ":new_faction", reg0),
         
          (try_begin),
@@ -15759,7 +15708,7 @@ I suppose there are plenty of bounty hunters around to get the job done . . .", 
      "As you are my chief minister, I wish to speak to about affairs of state", "minister_issues", []],
     #####
     [anyone | plyr, "spouse_talk", [],
-     "Would my beautiful wife mind putting on a new dress today?", "spouse_equipment", [(call_script, "script_all_toggle_weapons_set", 1), ]],
+     "Would you mind putting on a new dress today?", "spouse_equipment", [(call_script, "script_all_toggle_weapons_set", 1), ]],
     [anyone, "spouse_equipment", [], "That's very nice of you, what would you like me to wear?", "spouse_equipment_changed", [(change_screen_equip_other),]],
     [anyone, "spouse_equipment_changed", [], "How do I look? Isn't it a little bizarre?", "spouse_equipment_done", []],
     [anyone | plyr, "spouse_equipment_done", [], "Well, we will try something else then.", "spouse_equipment_changed", [(change_screen_equip_other),]],
